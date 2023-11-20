@@ -303,7 +303,7 @@ def exp_manager(trainer: 'pytorch_lightning.Trainer', cfg: Optional[Union[DictCo
                 Set this to True if you are using DDP with many GPUs and do not want many log files in your exp dir.
             - log_global_rank_0_only (bool): Whether to only create log files for global rank 0. Defaults to False.
                 Set this to True if you are using DDP with many GPUs and do not want many log files in your exp dir.
-            - max_time (str): The maximum wall clock time *per run*. This is intended to be used on clusters where you want 
+            - max_time (str): The maximum wall clock time *per run*. This is intended to be used on clusters where you want
                 a checkpoint to be saved after this specified time and be able to resume from that checkpoint. Defaults to None.
             - seconds_to_sleep (float): seconds to sleep non rank 0 processes for. Used to give enough time for rank 0 to initialize
 
@@ -494,11 +494,11 @@ def exp_manager(trainer: 'pytorch_lightning.Trainer', cfg: Optional[Union[DictCo
             _file.write(" ".join(sys.argv))
 
         # Try to get git hash
-        git_repo, git_hash = get_git_hash()
-        if git_repo:
-            with open(log_dir / 'git-info.log', 'w', encoding='utf-8') as _file:
-                _file.write(f'commit hash: {git_hash}')
-                _file.write(get_git_diff())
+        #git_repo, git_hash = get_git_hash()
+        #if git_repo:
+        #    with open(log_dir / 'git-info.log', 'w', encoding='utf-8') as _file:
+        #        _file.write(f'commit hash: {git_hash}')
+        #    _file.write(get_git_diff())
 
         # Add err_file logging to global_rank zero
         logging.add_err_file_handler(log_dir / 'nemo_error_log.txt')

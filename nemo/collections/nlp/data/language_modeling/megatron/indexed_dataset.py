@@ -509,12 +509,12 @@ class MMapIndexedDataset(torch.utils.data.Dataset):
         self._path = path
         self._index = self.Index(index_file_path(self._path), skip_warmup)
 
-        if not delay_data_mmap:
-            self._create_data_mmap(skip_warmup)
-        else:
-            logging.info("    skip creating data numpy buffer of mmap...")
-            self._bin_buffer_mmap = None
-            self._bin_buffer = None
+        #if not delay_data_mmap:
+        self._create_data_mmap(skip_warmup)
+        #else:
+        #    logging.info("    skip creating data numpy buffer of mmap...")
+        #    self._bin_buffer_mmap = None
+        #    self._bin_buffer = None
 
     def _create_data_mmap(self, skip_warmup):
         if not skip_warmup:
